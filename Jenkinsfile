@@ -17,5 +17,11 @@ pipeline
                   echo "Custom Variable: ${env.CUSTOM_VAR}"
              }
          }
+          stage("My Name"){
+             steps{
+                
+                  echo "Name: ${env.name}"
+             }
+         }
      }
 }
