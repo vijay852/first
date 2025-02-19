@@ -3,6 +3,7 @@ pipeline
     agent any
      environment {
         name = "vijay"
+        CUSTOM_VAR = "Hello, Jenkins!"
      }
      stages {
          stage("Welcome"){
@@ -12,7 +13,8 @@ pipeline
          }
          stage("Print Env"){
              steps{
-                 echo $name
+                
+                  echo "Custom Variable: ${env.CUSTOM_VAR}"
              }
          }
      }
