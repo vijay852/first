@@ -1,28 +1,20 @@
-currentBuild.displayName= " Online-shopping ----"+currentBuild.number
-pipeline
-{
+pipeline {
     agent any
-     environment {
-        name = "vijay"
-        CUSTOM_VAR = "Hello, Jenkins!"
-     }
-     stages {
-         stage("Welcome"){
-             steps{
-                 echo "Welcome to Jenkins declearative pipeline"
-             }
-         }
-         stage("Print Env"){
-             steps{
+    environment {
+        DOCKER_TAG = getDockerTag()
+    }
+      stages{
+         stage("Build Docker Image"){
+            steps{
+                sh "docker build -t vijay4444/nodeapp:${DOCKER_TAG}"
                 
-                  echo "Custom Variable: ${env.CUSTOM_VAR}"
-             }
+            }
          }
-          stage("My Name"){
-             steps{
-                
-                  echo "Name: ${env.name}"
-             }
-         }
-     }
+      }
+}
+
+def getDockerTag()
+{
+    def tag = sh script: 'git rev-parse HEAD', returnStdout: true
+    return tag
 }
