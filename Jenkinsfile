@@ -1,5 +1,4 @@
 currentBuild.displayName= " Online-shopping ----"+currentBuild.number
-currentBuild.currentResult = " Result of pipeline" + currentBuild.currentResult
 pipeline
 {
     agent any
